@@ -1,13 +1,16 @@
 'use strict';
 window.addEventListener("load", function() {
-
-    let todoList = JSON.parse(localStorage.list);
     let todoListsave = [];
     let t = document.getElementById("modeleListe");
     let g = document.getElementById("g");
     let p = document.getElementById("modeleDetail");
-
-    ajoutTab();
+    let todoList
+    if (localStorage.list) {
+      todoList = JSON.parse(localStorage.list)
+      ajoutTab();
+    } else {
+      todoList = []
+    }
 
      /**
     *  Fonction ajout de tâche 
