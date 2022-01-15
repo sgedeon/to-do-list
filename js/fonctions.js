@@ -49,7 +49,7 @@ let nom = document.querySelector("#myInput").value;
     if (nom == "") {
         alert("Vous n'avez entré aucune tâche.");
         } else {
-        let todoObject = new object (nom,choixImportance(),dateHeure(),todoList.length,"faire");
+        let todoObject = new object (nom,choixImportance(),dateHeure(),todoList.length,"À faire");
         todoList.unshift(todoObject);
         todoList = triDeuxCriteres(todoList,"nom","importance");
         save();
