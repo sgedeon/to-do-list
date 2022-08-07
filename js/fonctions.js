@@ -7,8 +7,9 @@ let p = document.getElementById("modeleDetail");
 let todoList
 if (localStorage.list) {
     todoList = JSON.parse(localStorage.list)
+    triSelect();
     ajoutTab();
-    } else {
+} else {
     todoList = [];
 };
 
@@ -20,11 +21,11 @@ export function ajoutTab() {
     let tache = document.getElementById("g");
     tache.innerHTML = "";
     for (let elt of todoList) {
-    let tImport = document.importNode(t, true);
-        for (let prop in elt) {
-        tImport.innerHTML = tImport.innerHTML.replaceAll(`{${prop}}`, elt[prop]); 
-        }
-    g.appendChild(tImport.content);
+        let tImport = document.importNode(t, true);
+            for (let prop in elt) {
+                tImport.innerHTML = tImport.innerHTML.replaceAll(`{${prop}}`, elt[prop]); 
+            }
+        g.appendChild(tImport.content);
     }
 }
 
@@ -137,6 +138,7 @@ export function gererClic(evt) {
         save();
     } else if (e.className === "effacer"){
         e.parentNode.parentNode.remove();
+        objIndex = todoList.findIndex((obj => obj.id == e.parentNode.dataset.id));
         todoList.splice(objIndex,1);
         save();
         ajoutTab()
